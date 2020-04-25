@@ -1,0 +1,65 @@
+<div class="ui dimmer" [class.active]="loading">
+    <div class="ui text loader">Loading</div>
+</div>
+
+<div class="jumbotron bg-black text-center">
+    <h1 class="display-4">Corona Covid-19 Locator</h1>
+    <hr class="my-4">
+    <app-dashboard-card [totalConfirmed]='totalConfirmed' [totalRecovered]='totalRecovered' [totalDeaths]='totalDeaths'
+        [totalActive]='totalActive'></app-dashboard-card>
+</div>
+<hr>
+<div class="ui form">
+    <div class="inline fields">
+        <label for="casetype">Select Case Type:</label>
+        <div class="field">
+            <div class="ui radio checkbox">
+                <input type="radio" value="c" id='c' #c (click)='updateChart(c)' name="casetype" checked="" tabindex="0"
+                    class="hidden">
+                <label for='c'>Confirmed</label>
+            </div>
+        </div>
+        <div class="field">
+            <div class="ui radio checkbox">
+                <input type="radio" value="d" id='d' #d (click)='updateChart(d)' name="casetype" tabindex="0"
+                    class="hidden">
+                <label for='d'>Deaths</label>
+            </div>
+        </div>
+        <div class="field">
+            <div class="ui radio checkbox">
+                <input type="radio" value="r" id='r' #r (click)='updateChart(r)' name="casetype" tabindex="0"
+                    class="hidden">
+                <label for='r'>Recovered</label>
+            </div>
+        </div>
+        <div class="field">
+            <div class="ui radio checkbox">
+                <input type="radio" value="a" id='a' #a (click)='updateChart(a)' name="casetype" tabindex="0"
+                    class="hidden">
+                <label for='a'>Active</label>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <google-chart [type]="chart.PieChart" [height]="chart.height" [options]="chart.options" style="width: 90%;"
+            [data]="datatable">
+        </google-chart>
+    </div>
+    <div class="col">
+        <google-chart [type]="chart.ColumnChart" [height]="chart.height" [options]="chart.options" style="width: 90%;"
+            [data]="datatable">
+        </google-chart>
+    </div>
+</div>
+<br />
+<div class="text-center">
+    <a class="ui blue image label">
+
+        Noble Joy
+        <div class="detail">Creator</div>
+    </a>
+</div>
+<br />
